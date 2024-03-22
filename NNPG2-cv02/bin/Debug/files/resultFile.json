@@ -1,0 +1,866 @@
+{
+  "LList": [
+    {
+      "PathName": "A1",
+      "Vertices": [
+        "v21",
+        "v14",
+        "v30"
+      ]
+    },
+    {
+      "PathName": "A2",
+      "Vertices": [
+        "v21",
+        "v14",
+        "v30",
+        "v17",
+        "v29",
+        "v31"
+      ]
+    },
+    {
+      "PathName": "A3",
+      "Vertices": [
+        "v21",
+        "v14",
+        "v30",
+        "v17",
+        "v29",
+        "v18",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A4",
+      "Vertices": [
+        "v21",
+        "v14",
+        "v30",
+        "v17",
+        "v29",
+        "v18",
+        "v27"
+      ]
+    },
+    {
+      "PathName": "A5",
+      "Vertices": [
+        "v21",
+        "v14",
+        "v30",
+        "v17",
+        "v29",
+        "v31",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A6",
+      "Vertices": [
+        "v22",
+        "v15",
+        "v16",
+        "v17",
+        "v29",
+        "v31"
+      ]
+    },
+    {
+      "PathName": "A7",
+      "Vertices": [
+        "v22",
+        "v15",
+        "v16",
+        "v17",
+        "v29",
+        "v18",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A8",
+      "Vertices": [
+        "v22",
+        "v15",
+        "v16",
+        "v17",
+        "v29",
+        "v18",
+        "v27"
+      ]
+    },
+    {
+      "PathName": "A9",
+      "Vertices": [
+        "v22",
+        "v15",
+        "v16",
+        "v17",
+        "v29",
+        "v31",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A10",
+      "Vertices": [
+        "v22",
+        "v15",
+        "v16",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A11",
+      "Vertices": [
+        "v22",
+        "v15",
+        "v16",
+        "v31",
+        "v18",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A12",
+      "Vertices": [
+        "v22",
+        "v15",
+        "v16",
+        "v31",
+        "v18",
+        "v27"
+      ]
+    },
+    {
+      "PathName": "A13",
+      "Vertices": [
+        "v23",
+        "v12",
+        "v14",
+        "v30"
+      ]
+    },
+    {
+      "PathName": "A14",
+      "Vertices": [
+        "v23",
+        "v12",
+        "v14",
+        "v30",
+        "v17",
+        "v29",
+        "v31"
+      ]
+    },
+    {
+      "PathName": "A15",
+      "Vertices": [
+        "v23",
+        "v12",
+        "v14",
+        "v30",
+        "v17",
+        "v29",
+        "v18",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A16",
+      "Vertices": [
+        "v23",
+        "v12",
+        "v14",
+        "v30",
+        "v17",
+        "v29",
+        "v18",
+        "v27"
+      ]
+    },
+    {
+      "PathName": "A17",
+      "Vertices": [
+        "v23",
+        "v12",
+        "v14",
+        "v30",
+        "v17",
+        "v29",
+        "v31",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A18",
+      "Vertices": [
+        "v24",
+        "v13",
+        "v15",
+        "v16",
+        "v17",
+        "v29",
+        "v31"
+      ]
+    },
+    {
+      "PathName": "A19",
+      "Vertices": [
+        "v24",
+        "v13",
+        "v15",
+        "v16",
+        "v17",
+        "v29",
+        "v18",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A20",
+      "Vertices": [
+        "v24",
+        "v13",
+        "v15",
+        "v16",
+        "v17",
+        "v29",
+        "v18",
+        "v27"
+      ]
+    },
+    {
+      "PathName": "A21",
+      "Vertices": [
+        "v24",
+        "v13",
+        "v15",
+        "v16",
+        "v17",
+        "v29",
+        "v31",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A22",
+      "Vertices": [
+        "v24",
+        "v13",
+        "v15",
+        "v16",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A23",
+      "Vertices": [
+        "v24",
+        "v13",
+        "v15",
+        "v16",
+        "v31",
+        "v18",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A24",
+      "Vertices": [
+        "v24",
+        "v13",
+        "v15",
+        "v16",
+        "v31",
+        "v18",
+        "v27"
+      ]
+    },
+    {
+      "PathName": "A25",
+      "Vertices": [
+        "v29",
+        "v18",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A26",
+      "Vertices": [
+        "v29",
+        "v18",
+        "v27"
+      ]
+    },
+    {
+      "PathName": "A27",
+      "Vertices": [
+        "v30",
+        "v17",
+        "v29",
+        "v31"
+      ]
+    },
+    {
+      "PathName": "A28",
+      "Vertices": [
+        "v30",
+        "v17",
+        "v29",
+        "v18",
+        "v19",
+        "v28"
+      ]
+    },
+    {
+      "PathName": "A29",
+      "Vertices": [
+        "v30",
+        "v17",
+        "v29",
+        "v18",
+        "v27"
+      ]
+    },
+    {
+      "PathName": "A30",
+      "Vertices": [
+        "v30",
+        "v17",
+        "v29",
+        "v31",
+        "v19",
+        "v28"
+      ]
+    }
+  ],
+  "RList": [
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A6"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A7"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A8"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A9"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A10"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A11"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A12"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A18"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A19"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A20"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A21"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A22"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A23"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A24"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A25"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A26"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A2"
+        },
+        {
+          "Name": "A10"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A2"
+        },
+        {
+          "Name": "A22"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A4"
+        },
+        {
+          "Name": "A10"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A4"
+        },
+        {
+          "Name": "A22"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A6"
+        },
+        {
+          "Name": "A13"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A7"
+        },
+        {
+          "Name": "A13"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A8"
+        },
+        {
+          "Name": "A13"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A9"
+        },
+        {
+          "Name": "A13"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A10"
+        },
+        {
+          "Name": "A13"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A10"
+        },
+        {
+          "Name": "A14"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A10"
+        },
+        {
+          "Name": "A16"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A10"
+        },
+        {
+          "Name": "A26"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A10"
+        },
+        {
+          "Name": "A27"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A10"
+        },
+        {
+          "Name": "A29"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A11"
+        },
+        {
+          "Name": "A13"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A12"
+        },
+        {
+          "Name": "A13"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A13"
+        },
+        {
+          "Name": "A18"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A13"
+        },
+        {
+          "Name": "A19"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A13"
+        },
+        {
+          "Name": "A20"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A13"
+        },
+        {
+          "Name": "A21"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A13"
+        },
+        {
+          "Name": "A22"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A13"
+        },
+        {
+          "Name": "A23"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A13"
+        },
+        {
+          "Name": "A24"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A13"
+        },
+        {
+          "Name": "A25"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A13"
+        },
+        {
+          "Name": "A26"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A14"
+        },
+        {
+          "Name": "A22"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A16"
+        },
+        {
+          "Name": "A22"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A22"
+        },
+        {
+          "Name": "A26"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A22"
+        },
+        {
+          "Name": "A27"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A22"
+        },
+        {
+          "Name": "A29"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A10"
+        },
+        {
+          "Name": "A26"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A1"
+        },
+        {
+          "Name": "A22"
+        },
+        {
+          "Name": "A26"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A10"
+        },
+        {
+          "Name": "A13"
+        },
+        {
+          "Name": "A26"
+        }
+      ]
+    },
+    {
+      "DisjunktPaths": [
+        {
+          "Name": "A13"
+        },
+        {
+          "Name": "A22"
+        },
+        {
+          "Name": "A26"
+        }
+      ]
+    }
+  ]
+}
