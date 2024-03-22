@@ -653,14 +653,6 @@ namespace NNPG2_cv02
 
         private void tiskToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // prednastavime dialog
-
-            printDialog.AllowSomePages = true;
-            printDialog.PrinterSettings.MinimumPage = 1;
-            printDialog.PrinterSettings.MaximumPage = celkovyPocetStranDokumentu;
-            printDialog.PrinterSettings.FromPage = 1;
-            printDialog.PrinterSettings.ToPage = celkovyPocetStranDokumentu;
-
             // zobrazime dialog
             if (printDialog.ShowDialog() == DialogResult.OK)
             {
@@ -722,36 +714,34 @@ namespace NNPG2_cv02
             RectangleF rectMarginBounds = e.MarginBounds;
             g.DrawRectangles(Pens.Red, new RectangleF[] { rectMarginBounds });
 
-            int desiredWidth = this.PaintPanel.Width - radius - (Glob.ScrMaxX + Glob.ScrMinX);
-            int desiredHeight = this.PaintPanel.Height - radius - (Glob.ScrMaxY + Glob.ScrMinY);
+            int puvodniWidth = this.PaintPanel.Width;
+            int puvodniHeight = this.PaintPanel.Height;
 
             // Aktuální rozměry grafiky
-            float currentWidth = g.VisibleClipBounds.Width;
-            float currentHeight = g.VisibleClipBounds.Height;
+            float currentWidth = (float)e.MarginBounds.Width;
+            float currentHeight = (float)e.MarginBounds.Height;
 
             // Výpočet poměru škálování pro oba směry
-            float scaleX = desiredWidth / currentWidth;
-            float scaleY = desiredHeight / currentHeight;
-            float scale = Math.Min(scaleX, scaleY); // Použití menšího poměru pro zachování poměru stran
+            float Scalewidth = (float)currentWidth / puvodniWidth;
+            float ScaleHeight = (float)currentHeight / puvodniHeight;
+            float scale = Math.Min(Scalewidth, ScaleHeight); // Použití menšího poměru pro zachování poměru stran
 
             // Zmenšení plátna s zachováním poměru
-            g.ScaleTransform(scale, scale);
+            g.ScaleTransform(Scalewidth, ScaleHeight);
 
-            // Vypočtěte posunutí pro vycentrování na ose X
-            float offsetX = Math.Abs(currentWidth - desiredWidth * scale);
+            float offsetX = Math.Abs((rectPageBounds.Width - rectMarginBounds.Width) / 2f);
+            float offsetY = Math.Abs((rectPageBounds.Height - rectMarginBounds.Height) / 2f);
 
-            // Vypočtěte posunutí pro vycentrování na ose Y
-            float offsetY = Math.Abs(currentHeight - desiredHeight * scale) / 2;
+            float ofset = Math.Min(offsetX, offsetY);
 
             // Posunutí plátna
-            g.TranslateTransform(offsetX, offsetY);
+            g.TranslateTransform(ofset, ofset);
 
             // Vykreslení obsahu
             Kresli(g, aktualniTistenaStranka);
 
             // Resetování transformace
             g.ResetTransform();
-
 
 
             // varianta s formatovanim textu
@@ -804,16 +794,16 @@ namespace NNPG2_cv02
                     Rectangle kresliciPlocha = new Rectangle(
                         0, 
                         0, 
-                        this.PaintPanel.Width - radius, 
-                        this.PaintPanel.Height - radius
+                        this.PaintPanel.Width, 
+                        this.PaintPanel.Height
                         );
                     g.DrawImage(mapa, kresliciPlocha);
 
-                    redrawVertices(g);
-
-                    redrawEdges(g);
+                    
                 }
+                redrawVertices(g);
 
+                redrawEdges(g);
                 
             }
             catch
