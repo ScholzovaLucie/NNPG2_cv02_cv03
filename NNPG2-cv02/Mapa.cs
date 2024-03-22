@@ -43,6 +43,10 @@ namespace NNPG2_cv02
         private bool moove = false;
         private bool removing = false;
         private bool removeVertex = false;
+        private string volbaTisku = null;
+        private string pomerStran = null;
+        private string[] volbaTiskuMoznosti  = { "celé editované sítě" , "pouze aktuálně zobrazované části" };
+        private string[] pomerStranMoznosti = { "zachování originálního poměru", "plné využití plochy papíru" };
 
         Pen linePen;
 
@@ -94,6 +98,21 @@ namespace NNPG2_cv02
             {
                 seznamTiskarenComboBox.Items.Add(strPrintName);
             }
+
+            seznamTiskarenComboBox.SelectedItem = seznamTiskarenComboBox.Items[0];
+
+            foreach (var item in pomerStranMoznosti)
+            {
+                PomerStran.Items.Add(item);
+            }
+            PomerStran.SelectedItem = PomerStran.Items[0];
+
+            foreach (var item in volbaTiskuMoznosti)
+            {
+                VolbaTisku.Items.Add(item);
+            }
+            VolbaTisku.SelectedItem = VolbaTisku.Items[0];
+
         }
 
         private void InitializeGraphProcessor()
@@ -681,6 +700,7 @@ namespace NNPG2_cv02
 
         private void nahledToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             switch (printDialog.PrinterSettings.PrintRange)
             {
                 case PrintRange.AllPages:
@@ -703,84 +723,113 @@ namespace NNPG2_cv02
         private void vzhledStrankyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pageSetupDialog.ShowDialog();
+          
         }
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-            Graphics g = e.Graphics;
 
-            RectangleF rectPageBounds = e.PageBounds;
-            g.DrawRectangles(Pens.Black, new RectangleF[] { rectPageBounds });
-            RectangleF rectMarginBounds = e.MarginBounds;
-            g.DrawRectangles(Pens.Red, new RectangleF[] { rectMarginBounds });
+            if (volbaTisku != null && pomerStran != null)
+            {
+                Graphics g = e.Graphics;
 
-            int puvodniWidth = this.PaintPanel.Width;
-            int puvodniHeight = this.PaintPanel.Height;
+                RectangleF rectPageBounds = e.PageBounds;
+                g.DrawRectangles(Pens.Black, new RectangleF[] { rectPageBounds });
+                RectangleF rectMarginBounds = e.MarginBounds;
+                g.DrawRectangles(Pens.Red, new RectangleF[] { rectMarginBounds });
 
-            // Aktuální rozměry grafiky
-            float currentWidth = (float)e.MarginBounds.Width;
-            float currentHeight = (float)e.MarginBounds.Height;
+                float puvodniWidth = 0;
+                float puvodniHeight = 0;
+                float currentWidth = (float)e.MarginBounds.Width;
+                float currentHeight = (float)e.MarginBounds.Height;
+                float scaleX = 0;
+                float scaleY = 0;
 
-            // Výpočet poměru škálování pro oba směry
-            float Scalewidth = (float)currentWidth / puvodniWidth;
-            float ScaleHeight = (float)currentHeight / puvodniHeight;
-            float scale = Math.Min(Scalewidth, ScaleHeight); // Použití menšího poměru pro zachování poměru stran
-
-            // Zmenšení plátna s zachováním poměru
-            g.ScaleTransform(Scalewidth, ScaleHeight);
-
-            float offsetX = Math.Abs((rectPageBounds.Width - rectMarginBounds.Width) / 2f);
-            float offsetY = Math.Abs((rectPageBounds.Height - rectMarginBounds.Height) / 2f);
-
-            float ofset = Math.Min(offsetX, offsetY);
-
-            // Posunutí plátna
-            g.TranslateTransform(ofset, ofset);
-
-            // Vykreslení obsahu
-            Kresli(g, aktualniTistenaStranka);
-
-            // Resetování transformace
-            g.ResetTransform();
+                if (volbaTisku.Equals(volbaTiskuMoznosti[1]))
+                {
+                    puvodniWidth = this.PaintPanel.Width;
+                    puvodniHeight = this.PaintPanel.Height;
+                }
+                else if (volbaTisku.Equals(volbaTiskuMoznosti[0]))
+                {
+                    puvodniWidth = this.PaintPanel.Width;
+                    puvodniHeight = this.PaintPanel.Height;
+                }
 
 
-            // varianta s formatovanim textu
-            Font font7 = new Font("Arial Bold", 7f, GraphicsUnit.Millimeter);
-            string textHorni = "PG2_Úkol_03 - Dopravní síť\n";
+                if (pomerStran.Equals(pomerStranMoznosti[0]))
+                {
+                    // Výpočet poměru škálování pro oba směry
+                    float Scalewidth = (float)currentWidth / puvodniWidth;
+                    float ScaleHeight = (float)currentHeight / puvodniHeight;
+                    scaleX = Math.Min(Scalewidth, ScaleHeight);
+                    scaleY = Math.Min(Scalewidth, ScaleHeight);
 
-            if (aktualniTistenaStranka == 1)
-                textHorni += "Stránka 1 (síť včetně podkladové mapy)";
-            else
-                textHorni += "Stránka 2 (pouze síť)";
+                }
+                if (pomerStran.Equals(pomerStranMoznosti[1]))
+                {
+                    // Výpočet měřítka pro každý směr
+                    scaleX = currentWidth / puvodniWidth;
+                    scaleY = currentHeight / puvodniHeight;
+                }
 
-            StringFormat strfmt = new StringFormat();
-            strfmt.Alignment = StringAlignment.Center;
-            strfmt.LineAlignment = StringAlignment.Center;
-            Rectangle rectTextHorni = new Rectangle(e.PageBounds.Left, e.PageBounds.Top,
-                                                    e.PageBounds.Width, e.MarginBounds.Top - e.PageBounds.Top);
-            g.DrawString(textHorni, font7, Brushes.Black, rectTextHorni, strfmt);
+                float offsetX = Math.Abs((rectPageBounds.Width - rectMarginBounds.Width) / 2f);
+                float offsetY = Math.Abs((rectPageBounds.Height - rectMarginBounds.Height) / 2f);
 
-            //presne umisteni textu
-            Font font5 = new Font("Arial", 5f, GraphicsUnit.Millimeter);
-            string textDolniL = "Lucie Scholzová";
-            SizeF sizeTextDolniL = g.MeasureString(textDolniL, font5);
-            g.DrawString(textDolniL, font5, Brushes.Black,
-                         1, e.PageBounds.Height - e.PageBounds.Top - sizeTextDolniL.Height - 1);
+                float ofset = Math.Min(offsetX, offsetY);
 
+                // Aplikace měřítka na plátno
+                g.ScaleTransform(scaleX, scaleY);
 
-            string textDolniR = "Tisk: " + DateTime.Now.ToString("d/M/yyyy HH:mm:ss");
-            SizeF sizeTextDolniR = g.MeasureString(textDolniR, font5);
-            g.DrawString(textDolniR, font5, Brushes.Black,
-                         e.PageBounds.Left + e.PageBounds.Width - sizeTextDolniR.Width - 1,
-                         e.PageBounds.Top + e.PageBounds.Height - sizeTextDolniR.Height - 1);
+                // Posunutí plátna
+                g.TranslateTransform(ofset, ofset);
+
+                // Vykreslení obsahu
+                Kresli(g, aktualniTistenaStranka);
+
+                // Resetování transformace
+                g.ResetTransform();
 
 
-            aktualniTistenaStranka++;
-            zbyvajiciPocetStranTisku--;
-            if (zbyvajiciPocetStranTisku > 0)
-                e.HasMorePages = true;
-            else
-                e.HasMorePages = false;
+                // varianta s formatovanim textu
+                Font font7 = new Font("Arial Bold", 7f, GraphicsUnit.Millimeter);
+                string textHorni = "PG2_Úkol_03 - Dopravní síť\n";
+
+                if (aktualniTistenaStranka == 1)
+                    textHorni += "Stránka 1 (síť včetně podkladové mapy)";
+                else
+                    textHorni += "Stránka 2 (pouze síť)";
+
+                StringFormat strfmt = new StringFormat();
+                strfmt.Alignment = StringAlignment.Center;
+                strfmt.LineAlignment = StringAlignment.Center;
+                Rectangle rectTextHorni = new Rectangle(e.PageBounds.Left, e.PageBounds.Top,
+                                                        e.PageBounds.Width, e.MarginBounds.Top - e.PageBounds.Top);
+                g.DrawString(textHorni, font7, Brushes.Black, rectTextHorni, strfmt);
+
+                //presne umisteni textu
+                Font font5 = new Font("Arial", 5f, GraphicsUnit.Millimeter);
+                string textDolniL = "Lucie Scholzová";
+                SizeF sizeTextDolniL = g.MeasureString(textDolniL, font5);
+                g.DrawString(textDolniL, font5, Brushes.Black,
+                             1, e.PageBounds.Height - e.PageBounds.Top - sizeTextDolniL.Height - 1);
+
+
+                string textDolniR = "Tisk: " + DateTime.Now.ToString("d/M/yyyy HH:mm:ss");
+                SizeF sizeTextDolniR = g.MeasureString(textDolniR, font5);
+                g.DrawString(textDolniR, font5, Brushes.Black,
+                             e.PageBounds.Left + e.PageBounds.Width - sizeTextDolniR.Width - 1,
+                             e.PageBounds.Top + e.PageBounds.Height - sizeTextDolniR.Height - 1);
+
+
+                aktualniTistenaStranka++;
+                zbyvajiciPocetStranTisku--;
+                if (zbyvajiciPocetStranTisku > 0)
+                    e.HasMorePages = true;
+                else
+                    e.HasMorePages = false;
+            }
+           
 
         }
 
@@ -801,10 +850,21 @@ namespace NNPG2_cv02
 
                     
                 }
+
                 redrawVertices(g);
 
                 redrawEdges(g);
-                
+
+                if (this.disjunktPaths != null)
+                {
+                    ShowDisjunkt(g);
+                }
+
+                if (this.path != null)
+                {
+                    ShowPath(g, this.path, new Pen(Brushes.OrangeRed, 4));
+                }
+
             }
             catch
             {
@@ -844,13 +904,43 @@ namespace NNPG2_cv02
             
 			if (seznamTiskarenComboBox.SelectedItem != null)
 				printDocument.PrinterSettings.PrinterName = seznamTiskarenComboBox.SelectedItem.ToString();
-			 
+            else seznamTiskarenComboBox.SelectedItem = seznamTiskarenComboBox.Items[0];
+
         }
 
         private void seznamTiskarenComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (seznamTiskarenComboBox.SelectedItem != null)
                 printDocument.PrinterSettings.PrinterName = seznamTiskarenComboBox.SelectedItem.ToString();
+            else seznamTiskarenComboBox.SelectedItem = seznamTiskarenComboBox.Items[0];
+        }
+
+        private void VolbaTisku_Click(object sender, EventArgs e)
+        {
+            if (VolbaTisku.SelectedItem != null)
+                volbaTisku = VolbaTisku.SelectedItem.ToString();
+        }
+
+        private void PomerStran_Click(object sender, EventArgs e)
+        {
+            if (PomerStran.SelectedItem != null)
+                pomerStran = PomerStran.SelectedItem.ToString();
+        }
+
+        private void VolbaTisku_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (VolbaTisku.SelectedItem != null)
+                volbaTisku = VolbaTisku.SelectedItem.ToString();
+        }
+        private void PomerStran_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PomerStran.SelectedItem != null)
+                pomerStran = PomerStran.SelectedItem.ToString();
+        }
+
+        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

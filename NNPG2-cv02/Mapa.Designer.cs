@@ -54,6 +54,9 @@ namespace NNPG2_cv02
             this.nahledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vzhledStrankyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seznamTiskarenComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.VlastnostiTisku = new System.Windows.Forms.ToolStripDropDownButton();
+            this.VolbaTisku = new System.Windows.Forms.ToolStripComboBox();
+            this.PomerStran = new System.Windows.Forms.ToolStripComboBox();
             this.Panel = new System.Windows.Forms.Panel();
             this.MapaPanel = new System.Windows.Forms.Panel();
             this.PaintPanel = new System.Windows.Forms.Panel();
@@ -71,6 +74,7 @@ namespace NNPG2_cv02
             // 
             // ButtonsMenu
             // 
+            this.ButtonsMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.ButtonsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator1,
             this.pridani_uzlu,
@@ -88,7 +92,8 @@ namespace NNPG2_cv02
             this.toolStripSeparator5,
             this.toolStripSeparator6,
             this.zakladyTiskuToolStripMenuItem,
-            this.seznamTiskarenComboBox});
+            this.seznamTiskarenComboBox,
+            this.VlastnostiTisku});
             this.ButtonsMenu.Location = new System.Drawing.Point(0, 0);
             this.ButtonsMenu.Name = "ButtonsMenu";
             this.ButtonsMenu.Size = new System.Drawing.Size(1590, 25);
@@ -215,30 +220,59 @@ namespace NNPG2_cv02
             // tiskToolStripMenuItem
             // 
             this.tiskToolStripMenuItem.Name = "tiskToolStripMenuItem";
-            this.tiskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tiskToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.tiskToolStripMenuItem.Text = "Tisk";
             this.tiskToolStripMenuItem.Click += new System.EventHandler(this.tiskToolStripMenuItem_Click);
             // 
             // nahledToolStripMenuItem
             // 
             this.nahledToolStripMenuItem.Name = "nahledToolStripMenuItem";
-            this.nahledToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nahledToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.nahledToolStripMenuItem.Text = "Nahled";
             this.nahledToolStripMenuItem.Click += new System.EventHandler(this.nahledToolStripMenuItem_Click);
             // 
             // vzhledStrankyToolStripMenuItem
             // 
             this.vzhledStrankyToolStripMenuItem.Name = "vzhledStrankyToolStripMenuItem";
-            this.vzhledStrankyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.vzhledStrankyToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.vzhledStrankyToolStripMenuItem.Text = "Vzhled stranky";
             this.vzhledStrankyToolStripMenuItem.Click += new System.EventHandler(this.vzhledStrankyToolStripMenuItem_Click);
             // 
             // seznamTiskarenComboBox
             // 
+            this.seznamTiskarenComboBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.seznamTiskarenComboBox.Name = "seznamTiskarenComboBox";
             this.seznamTiskarenComboBox.Size = new System.Drawing.Size(121, 25);
             this.seznamTiskarenComboBox.SelectedIndexChanged += new System.EventHandler(this.seznamTiskarenComboBox_SelectedIndexChanged);
             this.seznamTiskarenComboBox.Click += new System.EventHandler(this.seznamTiskarenComboBox_Click);
+            // 
+            // VlastnostiTisku
+            // 
+            this.VlastnostiTisku.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.VlastnostiTisku.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.VolbaTisku,
+            this.PomerStran});
+            this.VlastnostiTisku.Image = ((System.Drawing.Image)(resources.GetObject("VlastnostiTisku.Image")));
+            this.VlastnostiTisku.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VlastnostiTisku.Name = "VlastnostiTisku";
+            this.VlastnostiTisku.Size = new System.Drawing.Size(98, 22);
+            this.VlastnostiTisku.Text = "VlastnostiTisku";
+            // 
+            // VolbaTisku
+            // 
+            this.VolbaTisku.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.VolbaTisku.Name = "VolbaTisku";
+            this.VolbaTisku.Size = new System.Drawing.Size(180, 23);
+            this.VolbaTisku.SelectedIndexChanged += new System.EventHandler(this.VolbaTisku_SelectedIndexChanged);
+            this.VolbaTisku.Click += new System.EventHandler(this.VolbaTisku_Click);
+            // 
+            // PomerStran
+            // 
+            this.PomerStran.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.PomerStran.Name = "PomerStran";
+            this.PomerStran.Size = new System.Drawing.Size(121, 23);
+            this.PomerStran.SelectedIndexChanged += new System.EventHandler(this.PomerStran_SelectedIndexChanged);
+            this.PomerStran.Click += new System.EventHandler(this.PomerStran_Click);
             // 
             // Panel
             // 
@@ -258,7 +292,7 @@ namespace NNPG2_cv02
             this.MapaPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MapaPanel.Location = new System.Drawing.Point(0, 25);
             this.MapaPanel.Name = "MapaPanel";
-            this.MapaPanel.Size = new System.Drawing.Size(1395, 800);
+            this.MapaPanel.Size = new System.Drawing.Size(1401, 800);
             this.MapaPanel.TabIndex = 1;
             // 
             // PaintPanel
@@ -268,7 +302,7 @@ namespace NNPG2_cv02
             this.PaintPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PaintPanel.Location = new System.Drawing.Point(0, 2);
             this.PaintPanel.Name = "PaintPanel";
-            this.PaintPanel.Size = new System.Drawing.Size(1395, 798);
+            this.PaintPanel.Size = new System.Drawing.Size(1401, 798);
             this.PaintPanel.TabIndex = 0;
             // 
             // Menu
@@ -278,9 +312,9 @@ namespace NNPG2_cv02
             this.Menu.Controls.Add(this.label2);
             this.Menu.Controls.Add(this.label1);
             this.Menu.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Menu.Location = new System.Drawing.Point(1395, 25);
+            this.Menu.Location = new System.Drawing.Point(1401, 25);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(195, 800);
+            this.Menu.Size = new System.Drawing.Size(189, 800);
             this.Menu.TabIndex = 1;
             // 
             // SeznamDisjunktnichCest
@@ -311,7 +345,7 @@ namespace NNPG2_cv02
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 2);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 1;
@@ -319,6 +353,7 @@ namespace NNPG2_cv02
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
@@ -372,6 +407,10 @@ namespace NNPG2_cv02
         private ToolStripMenuItem nahledToolStripMenuItem;
         private ToolStripMenuItem vzhledStrankyToolStripMenuItem;
         private ToolStripComboBox seznamTiskarenComboBox;
+        private ToolStripDropDownButton Vlastnosti;
+        private ToolStripDropDownButton VlastnostiTisku;
+        private ToolStripComboBox VolbaTisku;
+        private ToolStripComboBox PomerStran;
     }
 }
 
