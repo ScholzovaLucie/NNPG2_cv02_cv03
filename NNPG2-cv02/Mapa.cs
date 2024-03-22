@@ -45,8 +45,10 @@ namespace NNPG2_cv02
         private bool removeVertex = false;
         private string volbaTisku = null;
         private string pomerStran = null;
-        private string[] volbaTiskuMoznosti  = { "celé editované sítě" , "pouze aktuálně zobrazované části" };
+        private string tiskSMapou = null;
+        private string[] volbaTiskuMoznosti = { "celé editované sítě", "pouze aktuálně zobrazované části" };
         private string[] pomerStranMoznosti = { "zachování originálního poměru", "plné využití plochy papíru" };
+        private string[] tiskSMapouMoznosti = { "Tisk vše", "Tisk s mapou", "Tisk bez mapy" };
 
         Pen linePen;
 
@@ -112,6 +114,12 @@ namespace NNPG2_cv02
                 VolbaTisku.Items.Add(item);
             }
             VolbaTisku.SelectedItem = VolbaTisku.Items[0];
+
+            foreach (var item in tiskSMapouMoznosti)
+            {
+                TiskSBitMap.Items.Add(item);
+            }
+            TiskSBitMap.SelectedItem = VolbaTisku.Items[0];
 
         }
 
@@ -686,7 +694,7 @@ namespace NNPG2_cv02
                     case PrintRange.SomePages:
                         aktualniTistenaStranka = printDialog.PrinterSettings.FromPage;
                         zbyvajiciPocetStranTisku = printDialog.PrinterSettings.ToPage
-                                          - printDialog.PrinterSettings.FromPage + 1;
+                                                   - printDialog.PrinterSettings.FromPage + 1;
                         break;
                 }
 
@@ -723,7 +731,7 @@ namespace NNPG2_cv02
         private void vzhledStrankyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pageSetupDialog.ShowDialog();
-          
+
         }
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
@@ -829,7 +837,7 @@ namespace NNPG2_cv02
                 else
                     e.HasMorePages = false;
             }
-           
+
 
         }
 
@@ -841,14 +849,14 @@ namespace NNPG2_cv02
                 if (strana == 1)
                 {
                     Rectangle kresliciPlocha = new Rectangle(
-                        0, 
-                        0, 
-                        this.PaintPanel.Width, 
+                        0,
+                        0,
+                        this.PaintPanel.Width,
                         this.PaintPanel.Height
                         );
                     g.DrawImage(mapa, kresliciPlocha);
 
-                    
+
                 }
 
                 redrawVertices(g);
@@ -901,9 +909,9 @@ namespace NNPG2_cv02
 
         private void seznamTiskarenComboBox_Click(object sender, EventArgs e)
         {
-            
-			if (seznamTiskarenComboBox.SelectedItem != null)
-				printDocument.PrinterSettings.PrinterName = seznamTiskarenComboBox.SelectedItem.ToString();
+
+            if (seznamTiskarenComboBox.SelectedItem != null)
+                printDocument.PrinterSettings.PrinterName = seznamTiskarenComboBox.SelectedItem.ToString();
             else seznamTiskarenComboBox.SelectedItem = seznamTiskarenComboBox.Items[0];
 
         }
@@ -919,28 +927,71 @@ namespace NNPG2_cv02
         {
             if (VolbaTisku.SelectedItem != null)
                 volbaTisku = VolbaTisku.SelectedItem.ToString();
+            else VolbaTisku.SelectedItem = VolbaTisku.Items[0];
         }
 
         private void PomerStran_Click(object sender, EventArgs e)
         {
             if (PomerStran.SelectedItem != null)
                 pomerStran = PomerStran.SelectedItem.ToString();
+            else PomerStran.SelectedItem = PomerStran.Items[0];
         }
 
         private void VolbaTisku_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (VolbaTisku.SelectedItem != null)
                 volbaTisku = VolbaTisku.SelectedItem.ToString();
+            else VolbaTisku.SelectedItem = VolbaTisku.Items[0];
         }
         private void PomerStran_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (PomerStran.SelectedItem != null)
                 pomerStran = PomerStran.SelectedItem.ToString();
+            else PomerStran.SelectedItem = PomerStran.Items[0];
         }
 
-        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        private void TiskSBitMap_Click(object sender, EventArgs e)
         {
-
+            if (TiskSBitMap.SelectedItem != null)
+            {
+                if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[0]) printDialog.PrinterSettings.PrintRange = PrintRange.AllPages;
+                else if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[1])
+                {
+                    printDialog.PrinterSettings.PrintRange = PrintRange.SomePages;
+                    printDocument.PrinterSettings.FromPage = 1;
+                    printDocument.PrinterSettings.ToPage = 1;
+                }
+                else if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[2])
+                {
+                    printDialog.PrinterSettings.PrintRange = PrintRange.SomePages;
+                    printDocument.PrinterSettings.FromPage = 2;
+                    printDocument.PrinterSettings.ToPage = 2;
+                }
+            }
+            else TiskSBitMap.SelectedItem = TiskSBitMap.Items[0];
         }
+
+        private void TiskSBitMap_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TiskSBitMap.SelectedItem != null)
+            {
+                if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[0]) printDialog.PrinterSettings.PrintRange = PrintRange.AllPages;
+                else if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[1])
+                {
+                    printDialog.PrinterSettings.PrintRange = PrintRange.SomePages;
+                    printDocument.PrinterSettings.FromPage = 1;
+                    printDocument.PrinterSettings.ToPage = 1;
+                }
+                else if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[2])
+                {
+                    printDialog.PrinterSettings.PrintRange = PrintRange.SomePages;
+                    printDocument.PrinterSettings.FromPage = 2;
+                    printDocument.PrinterSettings.ToPage = 2;
+                }
+            }
+            else TiskSBitMap.SelectedItem = TiskSBitMap.Items[0];
+        }
+
+
     }
 }

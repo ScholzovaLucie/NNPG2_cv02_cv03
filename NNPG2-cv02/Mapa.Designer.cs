@@ -57,6 +57,7 @@ namespace NNPG2_cv02
             this.VlastnostiTisku = new System.Windows.Forms.ToolStripDropDownButton();
             this.VolbaTisku = new System.Windows.Forms.ToolStripComboBox();
             this.PomerStran = new System.Windows.Forms.ToolStripComboBox();
+            this.TiskSBitMap = new System.Windows.Forms.ToolStripComboBox();
             this.Panel = new System.Windows.Forms.Panel();
             this.MapaPanel = new System.Windows.Forms.Panel();
             this.PaintPanel = new System.Windows.Forms.Panel();
@@ -66,9 +67,11 @@ namespace NNPG2_cv02
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.ButtonsMenu.SuspendLayout();
             this.Panel.SuspendLayout();
             this.MapaPanel.SuspendLayout();
+            this.PaintPanel.SuspendLayout();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -251,7 +254,8 @@ namespace NNPG2_cv02
             this.VlastnostiTisku.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.VlastnostiTisku.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.VolbaTisku,
-            this.PomerStran});
+            this.PomerStran,
+            this.TiskSBitMap});
             this.VlastnostiTisku.Image = ((System.Drawing.Image)(resources.GetObject("VlastnostiTisku.Image")));
             this.VlastnostiTisku.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.VlastnostiTisku.Name = "VlastnostiTisku";
@@ -273,6 +277,14 @@ namespace NNPG2_cv02
             this.PomerStran.Size = new System.Drawing.Size(121, 23);
             this.PomerStran.SelectedIndexChanged += new System.EventHandler(this.PomerStran_SelectedIndexChanged);
             this.PomerStran.Click += new System.EventHandler(this.PomerStran_Click);
+            // 
+            // TiskSBitMap
+            // 
+            this.TiskSBitMap.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TiskSBitMap.Name = "TiskSBitMap";
+            this.TiskSBitMap.Size = new System.Drawing.Size(121, 23);
+            this.TiskSBitMap.SelectedIndexChanged += new System.EventHandler(this.TiskSBitMap_SelectedIndexChanged);
+            this.TiskSBitMap.Click += new System.EventHandler(this.TiskSBitMap_Click);
             // 
             // Panel
             // 
@@ -300,6 +312,7 @@ namespace NNPG2_cv02
             this.PaintPanel.AutoScroll = true;
             this.PaintPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PaintPanel.BackgroundImage")));
             this.PaintPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PaintPanel.Controls.Add(this.toolStrip1);
             this.PaintPanel.Location = new System.Drawing.Point(0, 2);
             this.PaintPanel.Name = "PaintPanel";
             this.PaintPanel.Size = new System.Drawing.Size(1401, 798);
@@ -357,6 +370,15 @@ namespace NNPG2_cv02
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1401, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
             // Mapa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,6 +392,8 @@ namespace NNPG2_cv02
             this.Panel.ResumeLayout(false);
             this.Panel.PerformLayout();
             this.MapaPanel.ResumeLayout(false);
+            this.PaintPanel.ResumeLayout(false);
+            this.PaintPanel.PerformLayout();
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
             this.ResumeLayout(false);
@@ -411,6 +435,8 @@ namespace NNPG2_cv02
         private ToolStripDropDownButton VlastnostiTisku;
         private ToolStripComboBox VolbaTisku;
         private ToolStripComboBox PomerStran;
+        private ToolStripComboBox TiskSBitMap;
+        private ToolStrip toolStrip1;
     }
 }
 
