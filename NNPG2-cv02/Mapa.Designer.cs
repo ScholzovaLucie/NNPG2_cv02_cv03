@@ -68,6 +68,10 @@ namespace NNPG2_cv02
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.Zahlavi = new System.Windows.Forms.ToolStripMenuItem();
+            this.Zapati = new System.Windows.Forms.ToolStripMenuItem();
+            this.CustomZahlavi = new System.Windows.Forms.ToolStripTextBox();
+            this.CustomZapati = new System.Windows.Forms.ToolStripTextBox();
             this.ButtonsMenu.SuspendLayout();
             this.Panel.SuspendLayout();
             this.MapaPanel.SuspendLayout();
@@ -255,7 +259,9 @@ namespace NNPG2_cv02
             this.VlastnostiTisku.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.VolbaTisku,
             this.PomerStran,
-            this.TiskSBitMap});
+            this.TiskSBitMap,
+            this.Zahlavi,
+            this.Zapati});
             this.VlastnostiTisku.Image = ((System.Drawing.Image)(resources.GetObject("VlastnostiTisku.Image")));
             this.VlastnostiTisku.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.VlastnostiTisku.Name = "VlastnostiTisku";
@@ -379,6 +385,34 @@ namespace NNPG2_cv02
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // Zahlavi
+            // 
+            this.Zahlavi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CustomZahlavi});
+            this.Zahlavi.Name = "Zahlavi";
+            this.Zahlavi.Size = new System.Drawing.Size(240, 22);
+            this.Zahlavi.Text = "Záhlaví";
+            // 
+            // Zapati
+            // 
+            this.Zapati.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CustomZapati});
+            this.Zapati.Name = "Zapati";
+            this.Zapati.Size = new System.Drawing.Size(240, 22);
+            this.Zapati.Text = "Zápatí";
+            // 
+            // CustomZahlavi
+            // 
+            this.CustomZahlavi.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CustomZahlavi.Name = "CustomZahlavi";
+            this.CustomZahlavi.Size = new System.Drawing.Size(100, 23);
+            // 
+            // CustomZapati
+            // 
+            this.CustomZapati.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CustomZapati.Name = "CustomZapati";
+            this.CustomZapati.Size = new System.Drawing.Size(100, 23);
+            // 
             // Mapa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,6 +471,10 @@ namespace NNPG2_cv02
         private ToolStripComboBox PomerStran;
         private ToolStripComboBox TiskSBitMap;
         private ToolStrip toolStrip1;
+        private ToolStripMenuItem Zahlavi;
+        private ToolStripTextBox CustomZahlavi;
+        private ToolStripMenuItem Zapati;
+        private ToolStripTextBox CustomZapati;
     }
 }
 

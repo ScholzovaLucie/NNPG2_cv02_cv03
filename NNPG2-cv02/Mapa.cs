@@ -46,9 +46,11 @@ namespace NNPG2_cv02
         private string volbaTisku = null;
         private string pomerStran = null;
         private string tiskSMapou = null;
+        private string defaultZahlavi = "PG2_Úkol_03 - Dopravní síť\n";
+        private string defaultZapati = "Lucie Scholzová";
         private string[] volbaTiskuMoznosti = { "celé editované sítě", "pouze aktuálně zobrazované části" };
         private string[] pomerStranMoznosti = { "zachování originálního poměru", "plné využití plochy papíru" };
-        private string[] tiskSMapouMoznosti = { "Tisk vše", "Tisk s mapou", "Tisk bez mapy" };
+        private string[] tiskSMapouMoznosti = { "Tisk vše", "síť včetně podkladové mapy", "pouze síť" };
 
         Pen linePen;
 
@@ -73,6 +75,8 @@ namespace NNPG2_cv02
 
         private void InitializeTisk()
         {
+            CustomZahlavi.Text = defaultZahlavi;
+            CustomZapati.Text = defaultZapati;
             printDocument = new PrintDocument();
             // Nazev tiskové úlohy, jak se bude zobrazovat ve spravci tisku
             printDocument.DocumentName = "PG2_Úkol_03 - Dopravní síť";
@@ -119,7 +123,7 @@ namespace NNPG2_cv02
             {
                 TiskSBitMap.Items.Add(item);
             }
-            TiskSBitMap.SelectedItem = VolbaTisku.Items[0];
+            TiskSBitMap.SelectedItem = TiskSBitMap.Items[0];
 
         }
 
@@ -736,7 +740,6 @@ namespace NNPG2_cv02
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-
             if (volbaTisku != null && pomerStran != null)
             {
                 Graphics g = e.Graphics;
@@ -797,37 +800,66 @@ namespace NNPG2_cv02
 
                 // Resetování transformace
                 g.ResetTransform();
+                var zahlavi = "";
+
+                if (CustomZahlavi.Text == "")
+                {
+                    zahlavi = defaultZahlavi;
+                }
+                else
+                {
+                    zahlavi = CustomZahlavi.Text;
+                }
 
 
                 // varianta s formatovanim textu
                 Font font7 = new Font("Arial Bold", 7f, GraphicsUnit.Millimeter);
-                string textHorni = "PG2_Úkol_03 - Dopravní síť\n";
 
-                if (aktualniTistenaStranka == 1)
-                    textHorni += "Stránka 1 (síť včetně podkladové mapy)";
-                else
-                    textHorni += "Stránka 2 (pouze síť)";
+                if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[0])
+                {
+                    if (aktualniTistenaStranka == 1)
+                        zahlavi += "Stránka 1 (síť včetně podkladové mapy)";
+                    else
+                        zahlavi += "Stránka 2 (pouze síť)";
+                }
+                else if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[1])
+                    zahlavi += "Stránka 1 " + tiskSMapouMoznosti[1];
+                else if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[2])
+                    zahlavi += "Stránka 1 " + tiskSMapouMoznosti[2];
+
+
 
                 StringFormat strfmt = new StringFormat();
                 strfmt.Alignment = StringAlignment.Center;
                 strfmt.LineAlignment = StringAlignment.Center;
                 Rectangle rectTextHorni = new Rectangle(e.PageBounds.Left, e.PageBounds.Top,
                                                         e.PageBounds.Width, e.MarginBounds.Top - e.PageBounds.Top);
-                g.DrawString(textHorni, font7, Brushes.Black, rectTextHorni, strfmt);
 
-                //presne umisteni textu
+
+                g.DrawString(zahlavi, font7, Brushes.Black, rectTextHorni, strfmt);
+
+                var zapati = "";
+         
+                if (CustomZapati.Text == "")
+                {
+                    zapati = defaultZapati;
+                }
+                else
+                {
+                    zapati = CustomZapati.Text;
+                }
+
                 Font font5 = new Font("Arial", 5f, GraphicsUnit.Millimeter);
-                string textDolniL = "Lucie Scholzová";
-                SizeF sizeTextDolniL = g.MeasureString(textDolniL, font5);
-                g.DrawString(textDolniL, font5, Brushes.Black,
+                SizeF sizeTextDolniL = g.MeasureString(zapati, font5);
+                g.DrawString(zapati, font5, Brushes.Black,
                              1, e.PageBounds.Height - e.PageBounds.Top - sizeTextDolniL.Height - 1);
-
 
                 string textDolniR = "Tisk: " + DateTime.Now.ToString("d/M/yyyy HH:mm:ss");
                 SizeF sizeTextDolniR = g.MeasureString(textDolniR, font5);
                 g.DrawString(textDolniR, font5, Brushes.Black,
                              e.PageBounds.Left + e.PageBounds.Width - sizeTextDolniR.Width - 1,
                              e.PageBounds.Top + e.PageBounds.Height - sizeTextDolniR.Height - 1);
+
 
 
                 aktualniTistenaStranka++;
