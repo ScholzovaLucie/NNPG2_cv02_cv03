@@ -1,7 +1,7 @@
-﻿using NNPG2_cv02.DrawData;
-using NNPG2_cv02.Graf;
-using NNPG2_cv02.Path;
-using NNPG2_cv02;
+﻿using NNPG2.DrawData;
+using NNPG2.Graf;
+using NNPG2.Path;
+using NNPG2;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +15,7 @@ using System.IO;
 using System.Drawing.Printing;
 using System.Drawing.Drawing2D;
 
-namespace NNPG2_cv02
+namespace NNPG2
 {
     public partial class Mapa : Form
     {

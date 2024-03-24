@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NNPG2_cv02.Graf;
+using NNPG2.Graf;
 
-namespace NNPG2_cv02.Path
+namespace NNPG2.Path
 {
     public class Path<T, TVertexData, TEdgeData>
     {

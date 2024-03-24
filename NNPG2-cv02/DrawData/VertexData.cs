@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NNPG2_cv02.DrawData
+namespace NNPG2.DrawData
 {
     internal class VertexData
     {

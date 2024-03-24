@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NNPG2-cv02", "NNPG2-cv02\NNPG2-cv02.csproj", "{7AD44428-1658-42DC-B4BA-88FEF9563151}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NNPG2", "NNPG2-cv02\NNPG2.csproj", "{7AD44428-1658-42DC-B4BA-88FEF9563151}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

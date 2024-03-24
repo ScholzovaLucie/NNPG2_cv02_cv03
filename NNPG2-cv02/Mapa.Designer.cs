@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace NNPG2_cv02
+namespace NNPG2
 {
     partial class Mapa
     {

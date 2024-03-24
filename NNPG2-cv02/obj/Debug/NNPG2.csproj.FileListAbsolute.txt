@@ -1,0 +1,14 @@
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\bin\Debug\NNPG2-cv02.exe.config
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\bin\Debug\NNPG2-cv02.exe
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\bin\Debug\NNPG2-cv02.pdb
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\bin\Debug\Newtonsoft.Json.dll
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\bin\Debug\Newtonsoft.Json.xml
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\obj\Debug\NNPG2.csproj.AssemblyReference.cache
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\obj\Debug\NNPG2.csproj.SuggestedBindingRedirects.cache
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\obj\Debug\NNPG2.Mapa.resources
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\obj\Debug\NNPG2_cv02.Properties.Resources.resources
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\obj\Debug\NNPG2.csproj.GenerateResource.cache
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\obj\Debug\NNPG2.csproj.CoreCompileInputs.cache
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\obj\Debug\NNPG2.csproj.CopyComplete
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\obj\Debug\NNPG2-cv02.exe
+C:\Users\lucka\OneDrive - Univerzita Pardubice\UPCE\ING 1.rocnik 2.semestr\grafika\cviceni\NNPG2-cv02\NNPG2-cv02\obj\Debug\NNPG2-cv02.pdb

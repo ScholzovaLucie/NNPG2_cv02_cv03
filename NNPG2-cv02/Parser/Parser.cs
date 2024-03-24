@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-using NNPG2_cv02.Graf;
+using NNPG2.Graf;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NNPG2_cv02.Parser
+namespace NNPG2.Parser
 {
     public class Parser<T, TVertexData, TEdgeData>
     {

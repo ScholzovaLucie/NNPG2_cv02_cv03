@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NNPG2_NNPG2_cv02.Properties
+namespace NNPG2_NNPG2.Properties
 {
 
 

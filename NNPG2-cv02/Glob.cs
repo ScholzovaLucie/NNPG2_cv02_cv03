@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NNPG2_cv02
+namespace NNPG2
 {
     static class Glob
     {

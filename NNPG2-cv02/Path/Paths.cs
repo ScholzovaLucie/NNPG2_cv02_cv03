@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using NNPG2_cv02.Graf;
+using NNPG2.Graf;
 using System;
 using System.Collections.Generic;
 
-namespace NNPG2_cv02.Path
+namespace NNPG2.Path
 {
     public class Paths<T, TVertexData, TEdgeData>
     {

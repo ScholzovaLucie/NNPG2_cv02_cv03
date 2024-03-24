@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using NNPG2_cv02.Graf;
-using NNPG2_cv02.DrawData;
+using NNPG2.Graf;
+using NNPG2.DrawData;
 
-namespace NNPG2_cv02.Path
+namespace NNPG2.Path
 {
     public class DisjointPaths<T, TVertexData, TEdgeData>
     {

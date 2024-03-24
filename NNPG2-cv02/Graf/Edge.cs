@@ -1,11 +1,11 @@
-﻿using NNPG2_cv02.DrawData;
+﻿using NNPG2.DrawData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NNPG2_cv02.Graf
+namespace NNPG2.Graf
 {
     public class Edge<T, TVertexData, TEdgeData>
     {

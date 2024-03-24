@@ -1,11 +1,11 @@
-﻿using NNPG2_cv02.DrawData;
-using NNPG2_cv02.Graf;
-using NNPG2_cv02.Parser;
-using NNPG2_cv02.Path;
+﻿using NNPG2.DrawData;
+using NNPG2.Graf;
+using NNPG2.Parser;
+using NNPG2.Path;
 using System.Collections.Generic;
 
 
-namespace NNPG2_cv02
+namespace NNPG2
 {
     public class GraphProcessor<T, TVertexData, TEdgeData>
     {
