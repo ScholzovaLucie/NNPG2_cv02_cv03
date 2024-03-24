@@ -52,12 +52,15 @@ namespace NNPG2_cv02
             this.zakladyTiskuToolStripMenuItem = new System.Windows.Forms.ToolStripSplitButton();
             this.tiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nahledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vzhledStrankyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seznamTiskarenComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.VlastnostiTisku = new System.Windows.Forms.ToolStripDropDownButton();
             this.VolbaTisku = new System.Windows.Forms.ToolStripComboBox();
             this.PomerStran = new System.Windows.Forms.ToolStripComboBox();
             this.TiskSBitMap = new System.Windows.Forms.ToolStripComboBox();
+            this.Zahlavi = new System.Windows.Forms.ToolStripMenuItem();
+            this.CustomZahlavi = new System.Windows.Forms.ToolStripTextBox();
+            this.Zapati = new System.Windows.Forms.ToolStripMenuItem();
+            this.CustomZapati = new System.Windows.Forms.ToolStripTextBox();
             this.Panel = new System.Windows.Forms.Panel();
             this.MapaPanel = new System.Windows.Forms.Panel();
             this.PaintPanel = new System.Windows.Forms.Panel();
@@ -67,15 +70,9 @@ namespace NNPG2_cv02
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.Zahlavi = new System.Windows.Forms.ToolStripMenuItem();
-            this.Zapati = new System.Windows.Forms.ToolStripMenuItem();
-            this.CustomZahlavi = new System.Windows.Forms.ToolStripTextBox();
-            this.CustomZapati = new System.Windows.Forms.ToolStripTextBox();
             this.ButtonsMenu.SuspendLayout();
             this.Panel.SuspendLayout();
             this.MapaPanel.SuspendLayout();
-            this.PaintPanel.SuspendLayout();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -216,8 +213,7 @@ namespace NNPG2_cv02
             this.zakladyTiskuToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.zakladyTiskuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tiskToolStripMenuItem,
-            this.nahledToolStripMenuItem,
-            this.vzhledStrankyToolStripMenuItem});
+            this.nahledToolStripMenuItem});
             this.zakladyTiskuToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("zakladyTiskuToolStripMenuItem.Image")));
             this.zakladyTiskuToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.zakladyTiskuToolStripMenuItem.Name = "zakladyTiskuToolStripMenuItem";
@@ -227,27 +223,19 @@ namespace NNPG2_cv02
             // tiskToolStripMenuItem
             // 
             this.tiskToolStripMenuItem.Name = "tiskToolStripMenuItem";
-            this.tiskToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.tiskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tiskToolStripMenuItem.Text = "Tisk";
             this.tiskToolStripMenuItem.Click += new System.EventHandler(this.tiskToolStripMenuItem_Click);
             // 
             // nahledToolStripMenuItem
             // 
             this.nahledToolStripMenuItem.Name = "nahledToolStripMenuItem";
-            this.nahledToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.nahledToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nahledToolStripMenuItem.Text = "Nahled";
             this.nahledToolStripMenuItem.Click += new System.EventHandler(this.nahledToolStripMenuItem_Click);
             // 
-            // vzhledStrankyToolStripMenuItem
-            // 
-            this.vzhledStrankyToolStripMenuItem.Name = "vzhledStrankyToolStripMenuItem";
-            this.vzhledStrankyToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.vzhledStrankyToolStripMenuItem.Text = "Vzhled stranky";
-            this.vzhledStrankyToolStripMenuItem.Click += new System.EventHandler(this.vzhledStrankyToolStripMenuItem_Click);
-            // 
             // seznamTiskarenComboBox
             // 
-            this.seznamTiskarenComboBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.seznamTiskarenComboBox.Name = "seznamTiskarenComboBox";
             this.seznamTiskarenComboBox.Size = new System.Drawing.Size(121, 25);
             this.seznamTiskarenComboBox.SelectedIndexChanged += new System.EventHandler(this.seznamTiskarenComboBox_SelectedIndexChanged);
@@ -270,27 +258,57 @@ namespace NNPG2_cv02
             // 
             // VolbaTisku
             // 
-            this.VolbaTisku.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.VolbaTisku.Name = "VolbaTisku";
+            this.VolbaTisku.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always;
             this.VolbaTisku.Size = new System.Drawing.Size(180, 23);
             this.VolbaTisku.SelectedIndexChanged += new System.EventHandler(this.VolbaTisku_SelectedIndexChanged);
             this.VolbaTisku.Click += new System.EventHandler(this.VolbaTisku_Click);
             // 
             // PomerStran
             // 
-            this.PomerStran.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.PomerStran.Name = "PomerStran";
+            this.PomerStran.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always;
             this.PomerStran.Size = new System.Drawing.Size(121, 23);
             this.PomerStran.SelectedIndexChanged += new System.EventHandler(this.PomerStran_SelectedIndexChanged);
             this.PomerStran.Click += new System.EventHandler(this.PomerStran_Click);
             // 
             // TiskSBitMap
             // 
-            this.TiskSBitMap.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.TiskSBitMap.Name = "TiskSBitMap";
+            this.TiskSBitMap.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always;
             this.TiskSBitMap.Size = new System.Drawing.Size(121, 23);
             this.TiskSBitMap.SelectedIndexChanged += new System.EventHandler(this.TiskSBitMap_SelectedIndexChanged);
             this.TiskSBitMap.Click += new System.EventHandler(this.TiskSBitMap_Click);
+            // 
+            // Zahlavi
+            // 
+            this.Zahlavi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CustomZahlavi});
+            this.Zahlavi.Name = "Zahlavi";
+            this.Zahlavi.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always;
+            this.Zahlavi.Size = new System.Drawing.Size(240, 22);
+            this.Zahlavi.Text = "Záhlaví";
+            // 
+            // CustomZahlavi
+            // 
+            this.CustomZahlavi.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CustomZahlavi.Name = "CustomZahlavi";
+            this.CustomZahlavi.Size = new System.Drawing.Size(100, 23);
+            // 
+            // Zapati
+            // 
+            this.Zapati.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CustomZapati});
+            this.Zapati.Name = "Zapati";
+            this.Zapati.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always;
+            this.Zapati.Size = new System.Drawing.Size(240, 22);
+            this.Zapati.Text = "Zápatí";
+            // 
+            // CustomZapati
+            // 
+            this.CustomZapati.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CustomZapati.Name = "CustomZapati";
+            this.CustomZapati.Size = new System.Drawing.Size(100, 23);
             // 
             // Panel
             // 
@@ -318,7 +336,6 @@ namespace NNPG2_cv02
             this.PaintPanel.AutoScroll = true;
             this.PaintPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PaintPanel.BackgroundImage")));
             this.PaintPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PaintPanel.Controls.Add(this.toolStrip1);
             this.PaintPanel.Location = new System.Drawing.Point(0, 2);
             this.PaintPanel.Name = "PaintPanel";
             this.PaintPanel.Size = new System.Drawing.Size(1401, 798);
@@ -376,43 +393,6 @@ namespace NNPG2_cv02
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1401, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // Zahlavi
-            // 
-            this.Zahlavi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CustomZahlavi});
-            this.Zahlavi.Name = "Zahlavi";
-            this.Zahlavi.Size = new System.Drawing.Size(240, 22);
-            this.Zahlavi.Text = "Záhlaví";
-            // 
-            // Zapati
-            // 
-            this.Zapati.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CustomZapati});
-            this.Zapati.Name = "Zapati";
-            this.Zapati.Size = new System.Drawing.Size(240, 22);
-            this.Zapati.Text = "Zápatí";
-            // 
-            // CustomZahlavi
-            // 
-            this.CustomZahlavi.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CustomZahlavi.Name = "CustomZahlavi";
-            this.CustomZahlavi.Size = new System.Drawing.Size(100, 23);
-            // 
-            // CustomZapati
-            // 
-            this.CustomZapati.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CustomZapati.Name = "CustomZapati";
-            this.CustomZapati.Size = new System.Drawing.Size(100, 23);
-            // 
             // Mapa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -426,8 +406,6 @@ namespace NNPG2_cv02
             this.Panel.ResumeLayout(false);
             this.Panel.PerformLayout();
             this.MapaPanel.ResumeLayout(false);
-            this.PaintPanel.ResumeLayout(false);
-            this.PaintPanel.PerformLayout();
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
             this.ResumeLayout(false);
@@ -463,14 +441,12 @@ namespace NNPG2_cv02
         private ToolStripSplitButton zakladyTiskuToolStripMenuItem;
         private ToolStripMenuItem tiskToolStripMenuItem;
         private ToolStripMenuItem nahledToolStripMenuItem;
-        private ToolStripMenuItem vzhledStrankyToolStripMenuItem;
         private ToolStripComboBox seznamTiskarenComboBox;
         private ToolStripDropDownButton Vlastnosti;
         private ToolStripDropDownButton VlastnostiTisku;
         private ToolStripComboBox VolbaTisku;
         private ToolStripComboBox PomerStran;
         private ToolStripComboBox TiskSBitMap;
-        private ToolStrip toolStrip1;
         private ToolStripMenuItem Zahlavi;
         private ToolStripTextBox CustomZahlavi;
         private ToolStripMenuItem Zapati;

@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Printing;
+using System.Drawing.Drawing2D;
 
 namespace NNPG2_cv02
 {
@@ -48,9 +49,19 @@ namespace NNPG2_cv02
         private string tiskSMapou = null;
         private string defaultZahlavi = "PG2_Úkol_03 - Dopravní síť\n";
         private string defaultZapati = "Lucie Scholzová";
-        private string[] volbaTiskuMoznosti = { "celé editované sítě", "pouze aktuálně zobrazované části" };
-        private string[] pomerStranMoznosti = { "zachování originálního poměru", "plné využití plochy papíru" };
-        private string[] tiskSMapouMoznosti = { "Tisk vše", "síť včetně podkladové mapy", "pouze síť" };
+        private string[] volbaTiskuMoznosti = {
+            "celé editované sítě", 
+            //"pouze aktuálně zobrazované části" 
+        };
+        private string[] pomerStranMoznosti = {
+            "zachování originálního poměru",
+            "plné využití plochy papíru"
+        };
+        private string[] tiskSMapouMoznosti = {
+            "Tisk vše",
+            "síť včetně podkladové mapy",
+            "pouze síť"
+        };
 
         Pen linePen;
 
@@ -78,53 +89,34 @@ namespace NNPG2_cv02
             CustomZahlavi.Text = defaultZahlavi;
             CustomZapati.Text = defaultZapati;
             printDocument = new PrintDocument();
-            // Nazev tiskové úlohy, jak se bude zobrazovat ve spravci tisku
             printDocument.DocumentName = "PG2_Úkol_03 - Dopravní síť";
-
             printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
-
-            // Vytvoříme Dialog Tisk:
             printDialog = new PrintDialog();
-            // Nastavíme dokument pro dialog Tisk:
             printDialog.Document = printDocument;
-
-            // Vytvoříme dialog Vzhled stránky:
             pageSetupDialog = new PageSetupDialog();
-            // Nastavíme dokument pro dialog Vzhled stránky:
             pageSetupDialog.Document = printDocument;
-
-            // Vytvoříme Dialog Náhled:
             printPreviewDialog = new PrintPreviewDialog();
-            // Nastavíme dokument pro dialog Náhled:
             printPreviewDialog.Document = printDocument;
 
-
-            // naplneni seznamu tiskaren do Comboboxu
             foreach (string strPrintName in PrinterSettings.InstalledPrinters)
-            {
                 seznamTiskarenComboBox.Items.Add(strPrintName);
-            }
 
             seznamTiskarenComboBox.SelectedItem = seznamTiskarenComboBox.Items[0];
 
             foreach (var item in pomerStranMoznosti)
-            {
                 PomerStran.Items.Add(item);
-            }
+
             PomerStran.SelectedItem = PomerStran.Items[0];
 
             foreach (var item in volbaTiskuMoznosti)
-            {
                 VolbaTisku.Items.Add(item);
-            }
+
             VolbaTisku.SelectedItem = VolbaTisku.Items[0];
 
             foreach (var item in tiskSMapouMoznosti)
-            {
                 TiskSBitMap.Items.Add(item);
-            }
-            TiskSBitMap.SelectedItem = TiskSBitMap.Items[0];
 
+            TiskSBitMap.SelectedItem = TiskSBitMap.Items[0];
         }
 
         private void InitializeGraphProcessor()
@@ -186,10 +178,7 @@ namespace NNPG2_cv02
                 this.disjunktPaths = this.DisjointTuples.DisjointPathSets[this.SeznamDisjunktnichCest.SelectedIndex];
                 this.path = null;
             }
-            else
-            {
-                this.disjunktPaths = null;
-            }
+            else this.disjunktPaths = null;
 
             this.PaintPanel.Invalidate();
         }
@@ -207,10 +196,7 @@ namespace NNPG2_cv02
                     }
                 }
             }
-            else
-            {
-                this.path = null;
-            }
+            else this.path = null;
 
             this.PaintPanel.Invalidate();
         }
@@ -292,10 +278,8 @@ namespace NNPG2_cv02
                 }
             }
 
-            if (!found)
-            {
-                this.vertex = null;
-            }
+            if (!found) this.vertex = null;
+
             this.PaintPanel.Invalidate();
         }
 
@@ -387,24 +371,17 @@ namespace NNPG2_cv02
                 redrawEdges(g);
             }
 
-            if (this.disjunktPaths != null)
-            {
-                ShowDisjunkt(g);
-            }
+            if (this.disjunktPaths != null) ShowDisjunkt(g);
 
-            if (this.path != null)
-            {
-                ShowPath(g, this.path, new Pen(Brushes.OrangeRed, 4));
-            }
+            if (this.path != null) ShowPath(g, this.path, new Pen(Brushes.OrangeRed, 4));
         }
 
         private void ShowDisjunkt(Graphics g)
         {
             Brush[] brushes = { Brushes.DeepPink, Brushes.Yellow, Brushes.GreenYellow, Brushes.Aqua, Brushes.DarkViolet };
             for (int i = 0; i < disjunktPaths.Count; i++)
-            {
                 ShowPath(g, disjunktPaths.ElementAt(i), new Pen(brushes[i], 4));
-            }
+
         }
 
         private void ShowPath(Graphics g, Path<string, VertexData, EdgeData> currentpath, Pen pen)
@@ -435,8 +412,6 @@ namespace NNPG2_cv02
                                                                              crossList[2].data.rectangle.X + (crossList[2].data.rectangle.Width / 2),
                                                                              crossList[2].data.rectangle.Y + (crossList[2].data.rectangle.Height / 2));
                                 }
-
-
                             }
                         }
                     }
@@ -468,25 +443,17 @@ namespace NNPG2_cv02
                 else
                 {
                     if (this.InputVertices.Contains(item))
-                    {
                         g.FillEllipse(Brushes.Green, item.data.rectangle);
-                    }
+
                     else if (this.OutputVertices.Contains(item))
-                    {
                         g.FillEllipse(Brushes.Yellow, item.data.rectangle);
-                    }
+
                     else
-                    {
                         g.FillEllipse(Brushes.Blue, item.data.rectangle);
-                    }
 
                     foreach (var crossList in this.graf.Cross)
-                    {
                         if (crossList[1] == item)
-                        {
                             g.FillEllipse(Brushes.Purple, item.data.rectangle);
-                        }
-                    }
 
                     g.DrawString(item.Name, drawFont, drawBrush, item.data.coordinateX, item.data.coordinateY - radius, drawFormat);
                 }
@@ -500,22 +467,17 @@ namespace NNPG2_cv02
             {
                 foreach (Edge<string, VertexData, EdgeData> edge in v.Edges)
                 {
-
                     g.DrawLine(pen, edge.StartVertex.data.rectangle.X + (edge.StartVertex.data.rectangle.Width / 2),
                                       edge.StartVertex.data.rectangle.Y + (edge.StartVertex.data.rectangle.Height / 2),
                                       edge.EndVertex.data.rectangle.X + (edge.EndVertex.data.rectangle.Width / 2),
                                       edge.EndVertex.data.rectangle.Y + (edge.EndVertex.data.rectangle.Height / 2));
 
                     foreach (var crossList in this.graf.Cross)
-                    {
                         if (crossList[1].Name.Equals(edge.EndVertex.Name))
-                        {
                             g.DrawLine(pen, edge.EndVertex.data.rectangle.X + (edge.EndVertex.data.rectangle.Width / 2),
                                   edge.EndVertex.data.rectangle.Y + (edge.EndVertex.data.rectangle.Height / 2),
                                   crossList[2].data.rectangle.X + (crossList[2].data.rectangle.Width / 2),
                                   crossList[2].data.rectangle.Y + (crossList[2].data.rectangle.Height / 2));
-                        }
-                    }
                 }
             }
 
@@ -526,13 +488,9 @@ namespace NNPG2_cv02
             if (ModifierKeys.HasFlag(Keys.Control))
             {
                 if (e.Delta > 0)
-                {
                     ZoomIn(e.Location);
-                }
                 else
-                {
                     ZoomOut(e.Location);
-                }
             }
         }
 
@@ -684,11 +642,8 @@ namespace NNPG2_cv02
 
         private void tiskToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // zobrazime dialog
             if (printDialog.ShowDialog() == DialogResult.OK)
             {
-                // Tistene stanky 
-
                 switch (printDialog.PrinterSettings.PrintRange)
                 {
                     case PrintRange.AllPages:
@@ -702,10 +657,7 @@ namespace NNPG2_cv02
                         break;
                 }
 
-                // Nastaveni orientace
                 printDialog.Document.DefaultPageSettings.Landscape = true;
-
-                // Vlastní tisk
                 printDocument.Print();
             }
         }
@@ -725,17 +677,14 @@ namespace NNPG2_cv02
                                                - printDialog.PrinterSettings.FromPage + 1;
                     break;
             }
-
-            // Nastaveni orientace
             printDialog.Document.DefaultPageSettings.Landscape = true;
-
             printPreviewDialog.ShowDialog();
         }
 
         private void vzhledStrankyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            printDialog.Document.DefaultPageSettings.Landscape = true;
             pageSetupDialog.ShowDialog();
-
         }
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
@@ -756,111 +705,42 @@ namespace NNPG2_cv02
                 float scaleX = 0;
                 float scaleY = 0;
 
-                if (volbaTisku.Equals(volbaTiskuMoznosti[1]))
+                if (volbaTisku.Equals(volbaTiskuMoznosti[0]))
                 {
                     puvodniWidth = this.PaintPanel.Width;
                     puvodniHeight = this.PaintPanel.Height;
                 }
-                else if (volbaTisku.Equals(volbaTiskuMoznosti[0]))
-                {
-                    puvodniWidth = this.PaintPanel.Width;
-                    puvodniHeight = this.PaintPanel.Height;
-                }
-
 
                 if (pomerStran.Equals(pomerStranMoznosti[0]))
                 {
-                    // Výpočet poměru škálování pro oba směry
                     float Scalewidth = (float)currentWidth / puvodniWidth;
                     float ScaleHeight = (float)currentHeight / puvodniHeight;
                     scaleX = Math.Min(Scalewidth, ScaleHeight);
                     scaleY = Math.Min(Scalewidth, ScaleHeight);
-
                 }
+
                 if (pomerStran.Equals(pomerStranMoznosti[1]))
                 {
-                    // Výpočet měřítka pro každý směr
                     scaleX = currentWidth / puvodniWidth;
                     scaleY = currentHeight / puvodniHeight;
                 }
 
-                float offsetX = Math.Abs((rectPageBounds.Width - rectMarginBounds.Width) / 2f);
-                float offsetY = Math.Abs((rectPageBounds.Height - rectMarginBounds.Height) / 2f);
+                float offsetX = e.MarginBounds.Left + ((e.MarginBounds.Width - this.PaintPanel.Width * scaleX) / 2f);
+                float offsetY = e.MarginBounds.Top + ((e.MarginBounds.Height - this.PaintPanel.Height * scaleY) / 2f);
 
                 float ofset = Math.Min(offsetX, offsetY);
 
-                // Aplikace měřítka na plátno
+                g.TranslateTransform(offsetX, offsetY);
+
                 g.ScaleTransform(scaleX, scaleY);
 
-                // Posunutí plátna
-                g.TranslateTransform(ofset, ofset);
-
-                // Vykreslení obsahu
                 Kresli(g, aktualniTistenaStranka);
 
-                // Resetování transformace
+                e.Graphics.ResetClip();
                 g.ResetTransform();
-                var zahlavi = "";
 
-                if (CustomZahlavi.Text == "")
-                {
-                    zahlavi = defaultZahlavi;
-                }
-                else
-                {
-                    zahlavi = CustomZahlavi.Text;
-                }
-
-
-                // varianta s formatovanim textu
-                Font font7 = new Font("Arial Bold", 7f, GraphicsUnit.Millimeter);
-
-                if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[0])
-                {
-                    if (aktualniTistenaStranka == 1)
-                        zahlavi += "Stránka 1 (síť včetně podkladové mapy)";
-                    else
-                        zahlavi += "Stránka 2 (pouze síť)";
-                }
-                else if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[1])
-                    zahlavi += "Stránka 1 " + tiskSMapouMoznosti[1];
-                else if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[2])
-                    zahlavi += "Stránka 1 " + tiskSMapouMoznosti[2];
-
-
-
-                StringFormat strfmt = new StringFormat();
-                strfmt.Alignment = StringAlignment.Center;
-                strfmt.LineAlignment = StringAlignment.Center;
-                Rectangle rectTextHorni = new Rectangle(e.PageBounds.Left, e.PageBounds.Top,
-                                                        e.PageBounds.Width, e.MarginBounds.Top - e.PageBounds.Top);
-
-
-                g.DrawString(zahlavi, font7, Brushes.Black, rectTextHorni, strfmt);
-
-                var zapati = "";
-         
-                if (CustomZapati.Text == "")
-                {
-                    zapati = defaultZapati;
-                }
-                else
-                {
-                    zapati = CustomZapati.Text;
-                }
-
-                Font font5 = new Font("Arial", 5f, GraphicsUnit.Millimeter);
-                SizeF sizeTextDolniL = g.MeasureString(zapati, font5);
-                g.DrawString(zapati, font5, Brushes.Black,
-                             1, e.PageBounds.Height - e.PageBounds.Top - sizeTextDolniL.Height - 1);
-
-                string textDolniR = "Tisk: " + DateTime.Now.ToString("d/M/yyyy HH:mm:ss");
-                SizeF sizeTextDolniR = g.MeasureString(textDolniR, font5);
-                g.DrawString(textDolniR, font5, Brushes.Black,
-                             e.PageBounds.Left + e.PageBounds.Width - sizeTextDolniR.Width - 1,
-                             e.PageBounds.Top + e.PageBounds.Height - sizeTextDolniR.Height - 1);
-
-
+                drawZahlavi(g, e);
+                drawZahpati(g, e);
 
                 aktualniTistenaStranka++;
                 zbyvajiciPocetStranTisku--;
@@ -869,74 +749,82 @@ namespace NNPG2_cv02
                 else
                     e.HasMorePages = false;
             }
+        }
 
+        private void drawZahlavi(Graphics g, PrintPageEventArgs e)
+        {
+            string zahlavi;
 
+            if (CustomZahlavi.Text == "") zahlavi = defaultZahlavi;
+            else zahlavi = CustomZahlavi.Text;
+
+            Font font7 = new Font("Arial Bold", 7f, GraphicsUnit.Millimeter);
+
+            if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[0])
+            {
+                if (aktualniTistenaStranka == 1)
+                    zahlavi += "Stránka 1 (síť včetně podkladové mapy)";
+                else
+                    zahlavi += "Stránka 2 (pouze síť)";
+            }
+            else if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[1])
+                zahlavi += "Stránka 1 " + tiskSMapouMoznosti[1];
+            else if (TiskSBitMap.SelectedItem == tiskSMapouMoznosti[2])
+                zahlavi += "Stránka 1 " + tiskSMapouMoznosti[2];
+
+            StringFormat strfmt = new StringFormat();
+            strfmt.Alignment = StringAlignment.Center;
+            strfmt.LineAlignment = StringAlignment.Center;
+            Rectangle rectTextHorni = new Rectangle(e.PageBounds.Left, e.PageBounds.Top,
+                                                    e.PageBounds.Width, e.MarginBounds.Top - e.PageBounds.Top);
+
+            g.DrawString(zahlavi, font7, Brushes.Black, rectTextHorni, strfmt);
+        }
+
+        private void drawZahpati(Graphics g, PrintPageEventArgs e)
+        {
+            string zapati;
+
+            if (CustomZapati.Text == "") zapati = defaultZapati;
+            else zapati = CustomZapati.Text;
+
+            Font font5 = new Font("Arial", 5f, GraphicsUnit.Millimeter);
+            SizeF sizeTextDolniL = g.MeasureString(zapati, font5);
+            g.DrawString(zapati, font5, Brushes.Black,
+                         1, e.PageBounds.Height - e.PageBounds.Top - sizeTextDolniL.Height - 1);
+
+            string textDolniR = "Tisk: " + DateTime.Now.ToString("d/M/yyyy HH:mm:ss");
+            SizeF sizeTextDolniR = g.MeasureString(textDolniR, font5);
+            g.DrawString(textDolniR, font5, Brushes.Black,
+                         e.PageBounds.Left + e.PageBounds.Width - sizeTextDolniR.Width - 1,
+                         e.PageBounds.Top + e.PageBounds.Height - sizeTextDolniR.Height - 1);
         }
 
         public void Kresli(Graphics g, int strana)
         {
-            Image mapa = global::NNPG2_cv02.Properties.Resources.mapa;
-            try
+            Image mapa = Properties.Resources.mapa;
+
+            if (strana == 1)
             {
-                if (strana == 1)
-                {
-                    Rectangle kresliciPlocha = new Rectangle(
-                        0,
-                        0,
-                        this.PaintPanel.Width,
-                        this.PaintPanel.Height
-                        );
-                    g.DrawImage(mapa, kresliciPlocha);
-
-
-                }
-
-                redrawVertices(g);
-
-                redrawEdges(g);
-
-                if (this.disjunktPaths != null)
-                {
-                    ShowDisjunkt(g);
-                }
-
-                if (this.path != null)
-                {
-                    ShowPath(g, this.path, new Pen(Brushes.OrangeRed, 4));
-                }
-
+                Rectangle kresliciPlocha = new Rectangle(
+                    0,
+                    0,
+                    this.PaintPanel.Width,
+                    this.PaintPanel.Height
+                    );
+                g.DrawImage(mapa, kresliciPlocha);
             }
-            catch
-            {
-            }
-        }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
+            redrawVertices(g);
+            redrawEdges(g);
 
-        }
+            if (this.disjunktPaths != null)
+                ShowDisjunkt(g);
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
+            if (this.path != null)
+                ShowPath(g, this.path, new Pen(Brushes.OrangeRed, 4));
 
-        }
 
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            /*
-			if (seznamTiskarenComboBox.SelectedItem!=null)
-				printDocument.PrinterSettings.PrinterName = seznamTiskarenComboBox.SelectedItem.ToString();
-			 */
-        }
-
-        private void seznamTiskarenToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            /*
-			foreach (string strPrintName in PrinterSettings.InstalledPrinters)
-			{
-				seznamTiskarenComboBox.Items.Add(strPrintName);
-			}
-			 */
         }
 
         private void seznamTiskarenComboBox_Click(object sender, EventArgs e)
@@ -1023,7 +911,6 @@ namespace NNPG2_cv02
             }
             else TiskSBitMap.SelectedItem = TiskSBitMap.Items[0];
         }
-
 
     }
 }
